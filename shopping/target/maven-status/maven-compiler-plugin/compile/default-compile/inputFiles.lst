@@ -1,6 +1,9 @@
-C:\Users\高成\workspace\shopping\src\main\java\com\java2\web\dto\User.java
-C:\Users\高成\workspace\shopping\src\main\java\com\java2\web\controllers\UserController.java
-C:\Users\高成\workspace\shopping\src\main\java\com\java2\web\repository\UserRepo.java
-C:\Users\高成\workspace\shopping\src\main\java\com\java2\web\service\UserService.java
-C:\Users\高成\workspace\shopping\src\main\java\com\java2\web\repository\UserRepositoy.java
-C:\Users\高成\workspace\shopping\src\main\java\com\java2\web\service\UserServiceImpl.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\entity\AddressEntity.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\controllers\UserController.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\dto\User.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\service\UserService.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\service\UserServiceImpl.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\dto\Address.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\entity\UserEntity.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\repository\UserRepositoy.java
+E:\gaocheng\shopping\src\main\java\com\java2\web\repository\UserRepo.java
