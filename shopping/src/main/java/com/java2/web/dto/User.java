@@ -1,16 +1,26 @@
 package com.java2.web.dto;
 
+import java.util.List;
+
 public class User {
-	
+
 	private long id;
 
 	private String name;
 	private String nickname;
 	private String mailbox;
-	private String address;
 	private double balance;
-
 	
+    private List<Address> address;
+	
+    public List<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -43,14 +53,6 @@ public class User {
 		this.mailbox = mailbox;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public double getBalance() {
 		return balance;
 	}
@@ -58,4 +60,8 @@ public class User {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+
+	
+
+	
 }

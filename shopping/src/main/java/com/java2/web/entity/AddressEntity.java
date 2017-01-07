@@ -12,12 +12,13 @@ import javax.persistence.Table;
 @Table(name = "address")
 public class AddressEntity {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    private String address;
-    @ManyToOne(fetch=FetchType.EAGER)
+	private String country;
+   
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="user_id")
-	private UserEntity user;
+	private UserEntity userId;
 	
    
 	public int getId() {
@@ -26,12 +27,19 @@ public class AddressEntity {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getAddress() {
-		return address;
+	public String getCountry() {
+		return country;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCountry(String country) {
+		this.country = country;
 	}
+	public UserEntity getUserId() {
+		return userId;
+	}
+	public void setUserId(UserEntity userId) {
+		this.userId = userId;
+	}
+	
 
 
 }

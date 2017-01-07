@@ -8,7 +8,10 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.java2.web.dto.Address;
 import com.java2.web.dto.User;
+import com.java2.web.entity.AddressEntity;
+import com.java2.web.entity.UserEntity;
 
 @Repository
 public class UserRepo implements UserRepositoy {
@@ -17,19 +20,31 @@ public class UserRepo implements UserRepositoy {
 
 	@Transactional
 	@Override
-	public User addUser(User user) {
+	public void addUser(User user) {
+		UserEntity userEntity = new UserEntity();
+		userEntity.setBalance(user.getBalance());
+		userEntity.setMailbox(user.getMailbox());
+		userEntity.setName(user.getName());
+		userEntity.setNickname(user.getNickname());
+		userEntity.setId(user.getId());
+		
 
-		em.persist(user);
-
-		return user;
+		for (Address ad : user.getAddress()) {
+			AddressEntity ae = new AddressEntity();
+			ae.setCountry(ad.getCountry());
+			ae.setUserId(userEntity);
+			userEntity.getAddress().add(ae);
+		}
+		em.persist(userEntity);
 	}
 
 	@Transactional
 	@Override
-	public void removeUser(User user) {
+	public void removeUser(long userId) {
 
-		User users = em.find(User.class, user.getId());
-		em.remove(users);
+		UserEntity userEntity = em.find(UserEntity.class, userId);
+
+		em.remove(userEntity);
 
 	}
 
@@ -37,23 +52,27 @@ public class UserRepo implements UserRepositoy {
 	@Override
 	public void updateUser(User user) {
 
-		User users = em.find(User.class, user.getId());
-		users.setId(user.getId());
-		users.setName(user.getName());
-		users.setNickname(user.getNickname());
-		users.setAddress(user.getAddress());
-		users.setMailbox(user.getMailbox());
-		users.setBalance(user.getBalance());
-		em.merge(users);
+		UserEntity userEntity = em.find(UserEntity.class, user.getId());
+		userEntity.setId(user.getId());
+		userEntity.setName(user.getName());
+		userEntity.setNickname(user.getNickname());
+		userEntity.setMailbox(user.getMailbox());
+		userEntity.setBalance(user.getBalance());
+	
+		for (Address ad : user.getAddress()) {
+			AddressEntity ae = new AddressEntity();
+			ae.setCountry(ad.getCountry());
+			userEntity.getAddress().add(ae);
+		}
+		em.merge(userEntity);
 
 	}
 
 	@Transactional
 	@Override
-	public List<User> getAllUser() {
+	public List<UserEntity> getAllUsers() {
 		@SuppressWarnings("unchecked")
-		List<User> allUsers = em.createNativeQuery
-		("select * from user", User.class).getResultList();
+		List<UserEntity> allUsers = em.createNativeQuery("select * from users", UserEntity.class).getResultList();
 
 		return allUsers;
 	}
