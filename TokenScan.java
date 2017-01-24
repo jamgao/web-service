@@ -22,17 +22,17 @@ public class TokenScan extends Authentication {
 	@PostConstruct
 	public void postConstruct() {// 在构造函数之后去调用的一种方法
 		ScheduledExecutorService es = Executors.newScheduledThreadPool(1);
-		  Date a = new Date();
-	         Calendar cal = Calendar.getInstance();
-	         cal.add(Calendar.MINUTE,15);
-	         a.setValidateTime(cal.getTime()); 
+		   
 			
 		es.scheduleAtFixedRate(new Runnable() {
        
 			@Override
 			public void run() {
-				
-				for (String token :  UserServiceImpl.tokenMap.hashCode()) {
+				     Date a = new Date();
+			         Calendar cal = Calendar.getInstance();
+			         cal.add(Calendar.MINUTE,15);
+			         a.setValidateTime(cal.getTime()); 
+				for (String token :  UserServiceImpl.tokenMap.entrySet()) {
 					if (UserServiceImpl.tokenMap.get(token).getTime()  >= a) {
 						UserServiceImpl.tokenMap.remove(token);
 						
